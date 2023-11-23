@@ -1,7 +1,8 @@
-interface DockerConfig {
+export interface DockerConfig {
   suffix: string;
   image: string;
   compileCmd: string;
+  runCmd: string;
 }
 
 export const CONFIG: Record<string, DockerConfig> = {
@@ -9,5 +10,6 @@ export const CONFIG: Record<string, DockerConfig> = {
     suffix: 'cc',
     image: 'frolvlad/alpine-gxx',
     compileCmd: 'g++',
+    runCmd: './a.out',
   },
 };

@@ -1,7 +1,7 @@
 import Router from 'koa-router';
-import { CreateContainerDto } from './dto.ts';
+import { CreateContainerDto, RunContainerDto } from './dto.ts';
 import { CreateContainerVo } from './vo.ts';
-import { createContainer } from './service.ts';
+import { createContainer, runContainer } from './service.ts';
 
 export const router = new Router();
 
@@ -19,4 +19,9 @@ router.post('/create', async (ctx) => {
   const containerId = createContainer(body.lang, body.code);
 
   ctx.response.body = { containerId } as CreateContainerVo;
+});
+
+router.post('/run', async (ctx) => {
+  const body = ctx.request.body as RunContainerDto;
+  ctx.response.body = runContainer(body);
 });
