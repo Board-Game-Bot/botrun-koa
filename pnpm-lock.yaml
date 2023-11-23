@@ -34,6 +34,9 @@ devDependencies:
   '@types/koa2-cors':
     specifier: ^2.0.5
     version: 2.0.5
+  '@types/node':
+    specifier: ^20.9.4
+    version: 20.9.4
   eslint:
     specifier: ^8.54.0
     version: 8.54.0

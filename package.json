@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "nodemon --watch src/**/* -e ts --exec ts-node src/index.ts"
   },
-  "keywords": ["backend", "koa"],
+  "keywords": [
+    "backend",
+    "koa"
+  ],
   "author": "SokuRitszZ <1062708758@qq.com>",
   "license": "MIT",
   "devDependencies": {
@@ -14,6 +17,7 @@
     "@types/koa-bodyparser": "^4.3.12",
     "@types/koa-router": "^7.4.8",
     "@types/koa2-cors": "^2.0.5",
+    "@types/node": "^20.9.4",
     "eslint": "^8.54.0",
     "nodemon": "^3.0.1",
     "ts-node": "^10.9.1",
