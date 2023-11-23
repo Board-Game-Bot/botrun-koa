@@ -7,3 +7,7 @@ export interface RunContainerDto {
   containerId: string;
   input: string;
 }
+
+export interface StopContainerDto {
+  containerId: string;
+}

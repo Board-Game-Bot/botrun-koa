@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
 import { rmSync, writeFileSync } from 'fs';
 import { CONFIG, DockerConfig } from './docker.config';
-import { RunContainerDto } from './dto.ts';
+import { RunContainerDto, StopContainerDto } from './dto.ts';
 import { RunContainerVo } from './vo.ts';
 
 const CONTAINER_MAP: Record<string, DockerConfig> = {};
@@ -50,4 +50,19 @@ export function runContainer(dto: RunContainerDto): RunContainerVo {
   const output = execSync(RUN_CMD).toString().trim();
 
   return { output };
+}
+
+export function stopContainer(dto: StopContainerDto) {
+  const { containerId } = dto;
+  try {
+    try {
+      execSync(`docker kill ${containerId}`);
+    }
+    finally {
+      execSync(`docker rm ${containerId}`);
+    }
+  }
+  finally {
+    delete CONTAINER_MAP[containerId];
+  }
 }
