@@ -8,6 +8,10 @@ export interface RunContainerDto {
   input: string;
 }
 
+export interface CompileContainerDto {
+  containerId: string;
+}
+
 export interface StopContainerDto {
   containerId: string;
 }
