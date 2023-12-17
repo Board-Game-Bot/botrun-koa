@@ -66,14 +66,14 @@ export function compileContainer(dto: CompileContainerDto) {
 
 export function runContainer(dto: RunContainerDto): RunContainerVo {
   const { containerId, input } = dto;
-  const dataFileName = `${Math.random() * 100000 | 0}.data`;
+  const dataFileName = `data-${Math.random() * 100000 | 0}`;
 
   writeFileSync(dataFileName, input);
   execSync(`docker cp ${dataFileName} ${containerId}:.`);
   rmSync(dataFileName);
 
-  const runCmd = CONTAINER_MAP[containerId].runCmd(FILENAME_MAP[containerId]);
-  const RUN_CMD = `docker exec ${containerId} /bin/sh -c "${runCmd} < ./${dataFileName}"`;
+  const runCmd = CONTAINER_MAP[containerId].runCmd(FILENAME_MAP[containerId], dataFileName);
+  const RUN_CMD = `docker exec ${containerId} /bin/sh -c "${runCmd}"`;
   const output = execSync(RUN_CMD).toString().trim();
 
   return { output };
